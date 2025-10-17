@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Total Sales Dashboard</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeo5s+U5p3U6b3K5e6Z7XKp4Y5Rk5aVt9Z3G5t6V5X9K7k2L" crossorigin="anonymous">
+  <style>
+    /* Custom styles */
+    #total-sales {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .centered {
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center centered">
+  <div class="container text-center">
+    <div id="total-sales" class="mb-4">Total: $500</div>
+    <button id="refresh-btn" class="btn btn-primary">Refresh</button>
+  </div>
+
+  <!-- Bootstrap 5 Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-q2V3QJ9yV+G5+XK5X9K7k2L+5e6Z7XKp4Y5Rk5aVt9Z3G5t6V5X9K7k2L+ENjdO4D" crossorigin="anonymous"></script>
+  <script>
+    // Simple refresh logic: generate a random total between $100 and $1000
+    (function() {
+      const totalEl = document.getElementById('total-sales');
+      const btn = document.getElementById('refresh-btn');
+
+      if (!totalEl || !btn) {
+        console.error('Required elements are missing.');
+        return;
+      }
+
+      btn.addEventListener('click', function() {
+        try {
+          const randomTotal = (Math.random() * 900 + 100).toFixed(2);
+          totalEl.textContent = `Total: $${randomTotal}`;
+        } catch (err) {
+          console.error('Error updating total sales:', err);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
